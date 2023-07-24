@@ -8,4 +8,8 @@ node('built-in')
 	{
     sh label: '', script: 'mvn package'
 	}
+    stage('Continuous deployment_master') 
+	{
+    ssh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/MultiBranchPipeline_master/webapp/target/webapp.war   ubuntu@172.31.46.25:/var/lib/tomcat9/webapps/qaenv.war'
+	}
 }
